@@ -1,0 +1,241 @@
+select count ( * ) from singer
+select count ( * ) from singer
+select distinct country from singer where age > 20
+select distinct country from singer where age > 20
+select count ( * ) from pets where weight > 10
+select count ( * ) from pets where weight > 10
+select count ( distinct pettype ) from pets
+select count ( distinct pettype ) from pets
+select count ( * ) from continents
+select count ( * ) from continents
+select count ( * ) from countries
+select count ( * ) from countries
+sql placeholder
+sql placeholder
+select count ( * ) from cars_data where horsepower > 150
+select count ( * ) from cars_data where horsepower > 150
+select avg ( horsepower ) from cars_data where year < 1980
+select avg ( horsepower ) from cars_data where year < 1980
+sql placeholder
+sql placeholder
+select max ( accelerate ) from cars_data
+select count ( * ) from cars_data where cylinders > 4
+select count ( * ) from cars_data where cylinders > 4
+select count ( * ) from cars_data where year = 1980
+select count ( * ) from cars_data where year = 1980
+select count ( * ) from ( select country from car_makers group by country having count ( * ) > 2 )
+select count ( * ) from cars_data where cylinders > 6
+select count ( * ) from cars_data where cylinders > 6
+select country from airlines where airline = 'JetBlue Airways'
+select abbreviation from airlines where airline = 'JetBlue Airways'
+select abbreviation from airlines where airline = 'JetBlue Airways'
+select count ( * ) from airlines
+select count ( * ) from airlines
+select count ( * ) from airports
+select count ( * ) from airports
+select count ( * ) from flights
+select count ( * ) from flights
+select airline from airlines where abbreviation = 'UAL'
+select airline from airlines where abbreviation = 'UAL'
+select count ( * ) from airlines where country = 'USA'
+select count ( * ) from airlines where country = 'USA'
+select airportname from airports where airportcode = 'AKO'
+select airportname from airports where airportcode = 'AKO'
+select airportname from airports where city = 'Aberdeen'
+select airportname from airports where city = 'Aberdeen'
+select count ( * ) from flights where sourceairport = 'APG'
+select count ( * ) from flights where sourceairport = 'APG'
+select count ( * ) from flights where destairport = 'ATO'
+select count ( * ) from flights where sourceairport = 'ATO'
+select airline from flights group by airline having count ( * ) >= 10
+select airlines.airline from airlines join flights on airlines.airline = flights.airline group by airlines.airline having count ( * ) >= 10
+select airline from flights group by airline having count ( * ) < 200
+select airline from flights group by airline having count ( * ) < 200
+select flights.flightno from airlines join flights on airlines.airline = flights.flightno where airlines.airline = 'United Airlines'
+select flightno from flights where airline = 'United Airlines'
+select flightno from flights where sourceairport = 'APG'
+select flightno from flights where sourceairport = 'APG'
+select flightno from flights where sourceairport = 'APG'
+select count ( * ) from employee
+select count ( * ) from employee
+select name from employee order by age asc
+select name from employee order by age asc
+select sum ( bonus ) from evaluation
+select sum ( bonus ) from evaluation
+select * from hiring
+select * from hiring
+select count ( distinct location ) from shop
+select count ( distinct location ) from shop
+select count ( * ) from documents
+select count ( * ) from documents
+select count ( distinct template_id ) from documents
+select count ( distinct template_id ) from documents
+select template_id from documents group by template_id having count ( * ) > 1
+select count ( * ) from templates
+select count ( * ) from templates
+select distinct template_type_code from templates
+select distinct template_type_code from templates
+select count ( * ) from templates where template_type_code = 'CV'
+select count ( * ) from templates where template_type_code = 'CV'
+select template_type_code from templates group by template_type_code having count ( * ) < 3
+select template_type_code from templates group by template_type_code having count ( * ) < 3
+select document_name from documents join templates on documents.template_id = templates.template_id where templates.template_type_code = 'BK'
+select template_type_description from ref_template_types where template_type_code = 'AD'
+select template_type_description from ref_template_types where template_type_code = 'AD'
+select distinct ref_template_types.template_type_description from ref_template_types join templates on ref_template_types.template_type_code = templates.template_type_code
+select distinct document_description from documents join templates on documents.template_id = templates.template_id
+select count ( * ) from paragraphs
+select count ( * ) from paragraphs
+select document_id from paragraphs group by document_id having count ( * ) >= 2
+select document_id from paragraphs group by document_id having count ( * ) between 1 and 2
+select count ( * ) from teacher
+select count ( * ) from teacher
+select name from teacher order by age asc
+select name from teacher order by age asc
+select name from teacher where hometown != 'Little Lever Urban District'
+select name from teacher where hometown != 'Little Lever Urban District'
+select hometown from teacher group by hometown having count ( * ) >= 2
+select hometown from teacher group by hometown having count ( * ) >= 2
+select count ( * ) from visitor where age < 30
+select avg ( age ) from visitor where level_of_membership < 4
+select avg ( num_of_staff ) from museum where open_year < 2009
+select count ( * ) from players
+select count ( * ) from players
+select count ( * ) from matches
+select count ( * ) from matches
+select avg ( winner_rank ) from matches
+select avg ( winner_rank ) from matches
+select min ( loser_rank ) from matches
+select min ( loser_rank ) from matches
+select count ( distinct country_code ) from players
+select count ( distinct country_code ) from players
+select count ( distinct loser_name ) from matches
+select count ( distinct loser_name ) from matches
+select tourney_name from matches group by tourney_name having count ( * ) > 10
+select tourney_name from matches group by tourney_name having count ( * ) > 10
+select country_code from players group by country_code having count ( * ) > 50
+select country_code from players group by country_code having count ( * ) > 50
+select count ( * ) from ship where disposition_of_ship = 'Captured'
+select count ( distinct result ) from battle
+select count ( * ) from courses
+select count ( * ) from courses
+select course_description from courses where course_name = 'math'
+select course_description from courses where course_name = 'math'
+select zip_postcode from addresses where city = 'Port Chelsea'
+select zip_postcode from addresses where city = 'Port Chelsea'
+select count ( distinct department_id ) from degree_programs
+select count ( distinct department_id ) from degree_programs
+select count ( distinct degree_summary_name ) from degree_programs
+select count ( distinct degree_program_id ) from degree_programs
+select section_name from sections order by section_name desc
+select section_name from sections order by section_name desc
+select courses.course_name from courses join student_enrolment_courses on courses.course_id = student_enrolment_courses.course_id
+select avg ( transcript_date ) from transcripts
+select avg ( transcript_date ) from transcripts
+select count ( * ) from transcripts
+select count ( * ) from transcripts
+select count ( distinct current_address_id ) from students
+select distinct addresses.address_id from addresses join students on addresses.address_id = students.current_address_id
+select other_student_details from students order by other_student_details desc
+select other_student_details from students order by first_name desc
+select section_description from sections where section_name = 'h'
+select section_description from sections where section_name = 'h'
+select title from cartoon order by title asc
+select title from cartoon order by title asc
+select title from cartoon where directed_by = 'Ben Jones'
+select title from cartoon where directed_by = 'Ben Jones'
+select count ( * ) from cartoon where written_by = 'Joseph Kuhr'
+select count ( * ) from cartoon where written_by = 'Joseph Kuhr'
+select content from tv_channel where series_name = 'Sky Radio'
+select content from tv_channel where series_name = 'Sky Radio'
+select package_option from tv_channel where series_name = 'Sky Radio'
+select package_option from tv_channel where series_name = 'Sky Radio'
+select count ( * ) from tv_channel where language = 'English'
+select count ( * ) from tv_channel where language = 'English'
+select episode from tv_series order by rating asc
+select episode from tv_series order by rating asc
+select air_date from tv_series where episode = 'A Love of a Lifetime'
+select air_date from tv_series where episode = 'A Love of a Lifetime'
+select weekly_rank from tv_series where episode = 'A Love of a Lifetime'
+select weekly_rank from tv_series where episode = 'A Love of a Lifetime'
+select id from tv_channel group by country having count ( * ) > 2
+select id from tv_channel group by id having count ( * ) > 2
+select count ( * ) from poker_player
+select count ( * ) from poker_player
+select earnings from poker_player order by earnings desc
+select earnings from poker_player order by earnings desc
+select avg ( earnings ) from poker_player
+select avg ( earnings ) from poker_player
+select max ( final_table_made ) from poker_player where earnings < 200000
+select people.name from poker_player join people on poker_player.people_id = people.people_id
+select people.name from poker_player join people on poker_player.people_id = people.people_id
+select nationality from people group by nationality having count ( * ) >= 2
+select nationality from people group by nationality having count ( * ) >= 2
+select name from people where nationality != 'Russia'
+select name from people where nationality != 'Russia'
+select count ( distinct nationality ) from people
+select count ( distinct nationality ) from people
+select count ( distinct state ) from area_code_state
+select max ( created ) from votes where state = 'CA'
+select contestant_name from contestants where contestant_name != 'Jessie Alloway'
+select name from country where indepyear > 1950
+select name from country where indepyear > 1950
+select count ( * ) from country where governmentform = 'Republic'
+select count ( * ) from country where governmentform = 'Republic'
+select sum ( surfacearea ) from country where region = 'Caribbean'
+select sum ( surfacearea ) from country where continent = 'Carribean'
+select continent from country where name = 'Anguilla'
+select continent from country where name = 'Anguilla'
+select country.region from city join country on city.countrycode = country.code where city.name = 'Kabul'
+select region from country where name = 'Kabul'
+select sum ( population ) from city where district = 'Gelderland'
+select sum ( population ) from city where district = 'Gelderland'
+select count ( distinct language ) from countrylanguage
+select count ( distinct language ) from countrylanguage
+select count ( distinct governmentform ) from country where continent = 'Africa'
+select count ( distinct governmentform ) from country where continent = 'Africa'
+select count ( * ) from country where continent = 'Asia'
+select count ( * ) from country where continent = 'Asia'
+select name from city where population between 160000 and 900000
+select name from city where population between 160000 and 900000
+select count ( * ) from conductor
+select count ( * ) from conductor
+select name from conductor order by age asc
+select name from conductor order by age asc
+select name from conductor where nationality != 'USA'
+select name from conductor where nationality != 'USA'
+select record_company from orchestra order by year_of_founded desc
+select record_company from orchestra order by year_of_founded desc
+select avg ( attendance ) from show
+select avg ( attendance ) from show
+select count ( distinct nationality ) from conductor
+select count ( distinct nationality ) from conductor
+select name from conductor order by year_of_work desc
+select name from conductor order by year_of_work desc
+select count ( * ) from highschooler
+select count ( * ) from highschooler
+select distinct grade from highschooler
+select grade from highschooler
+select grade from highschooler where name = 'Kyle'
+select name from highschooler where grade = 10
+select name from highschooler where grade = 10
+select id from highschooler where name = 'Kyle'
+select id from highschooler where name = 'Kyle'
+select grade from highschooler group by grade having count ( * ) >= 4
+select grade from highschooler group by grade having count ( * ) >= 4
+select avg ( grade ) from highschooler join friend on highschooler.id = friend.student_id
+select avg ( dogs.age ) from treatments join dogs on treatments.dog_id = dogs.dog_id
+select count ( distinct dog_id ) from treatments
+select count ( distinct dog_id ) from treatments
+select count ( distinct professionals.professional_id ) from treatments join professionals on treatments.professional_id = professionals.professional_id
+select count ( distinct professionals.professional_id ) from treatments join professionals on treatments.professional_id = professionals.professional_id
+select avg ( age ) from dogs
+select avg ( age ) from dogs
+select count ( * ) from singer
+select count ( * ) from singer
+select name from singer order by net_worth_millions asc
+select name from singer order by net_worth_millions asc
+select name from singer where citizenship != 'France'
+select name from singer where citizenship != 'French'
+select count ( * ) from other_available_features
+select ref_property_types.property_type_description from properties join ref_property_types on properties.property_type_code = ref_property_types.property_type_code

@@ -1,0 +1,169 @@
+select song_name from singer where age > ( select avg ( age ) from singer )
+select song_name from singer where age > ( select avg ( age ) from singer )
+select year from concert group by year order by count ( * ) desc limit 1
+select year from concert group by year order by count ( * ) desc limit 1
+select name from stadium where stadium_id not in ( select stadium_id from concert )
+select name from stadium where stadium_id not in ( select stadium_id from concert )
+select country from singer where age > 40 intersect select country from singer where age < 30
+select name from stadium except select stadium.name from stadium join concert on stadium.stadium_id = concert.stadium_id where concert.year = 2014
+select name from stadium except select stadium.name from stadium join concert on stadium.stadium_id = concert.stadium_id where concert.year = 2014
+select count ( * ) from concert join stadium on concert.stadium_id = stadium.stadium_id where stadium.capacity = ( select max ( capacity ) from stadium )
+select count ( * ) from pets join has_pet on pets.petid = has_pet.petid join student on has_pet.stuid = student.stuid where student.sex = 'F' and pets.pettype = 'dog'
+select student.fname from has_pet join pets on has_pet.petid = pets.petid join student on has_pet.stuid = student.stuid where pets.pettype = 'cat' or pets.pettype = 'dog'
+select student.fname from has_pet join pets on has_pet.petid = pets.petid join student on has_pet.stuid = student.stuid where pets.pettype = 'cat' or pets.pettype = 'dog'
+select stuid from student except select stuid from has_pet join pets on has_pet.petid = pets.petid where pets.pettype = 'cat'
+select stuid from student except select stuid from has_pet join pets on has_pet.petid = pets.petid where pets.pettype = 'cat'
+select has_pet.petid from has_pet join student on has_pet.stuid = student.stuid where student.lname = 'Smith'
+select has_pet.petid from has_pet join pets on has_pet.petid = pets.petid join student on has_pet.stuid = student.stuid where student.lname = 'Smith'
+select model_list.model from cars_data join model_list on cars_data.id = model_list.model where cars_data.weight < ( select avg ( weight ) from cars_data )
+select model_list.model from model_list join cars_data on model_list.model = cars_data.id where cars_data.weight < ( select avg ( weight ) from cars_data )
+select model from model_list group by model order by count ( * ) desc limit 1
+select distinct model_list.model from model_list join car_makers on model_list.maker = car_makers.id join cars_data on cars_data.id = car_makers.id where car_makers.fullname = 'General Motors' or cars_data.weight > 3500
+select distinct model_list.model from model_list join car_makers on model_list.maker = car_makers.id join cars_data on cars_data.id = car_makers.id where car_makers.fullname = 'General Motors' or cars_data.weight > 3500
+select distinct year from cars_data where weight < 4000 intersect select distinct year from cars_data where weight > 3000
+select count ( * ) from cars_data where accelerate > ( select max ( horsepower ) from cars_data )
+select count ( * ) from cars_data where accelerate > ( select max ( horsepower ) from cars_data )
+select cylinders from cars_data where horsepower = 4 order by horsepower desc limit 1
+sql placeholder
+sql placeholder
+select countryname from countries where countryid not in ( select country from car_makers )
+select countryname from countries where countryid not in ( select country from car_makers )
+select countries.countryid , countries.countryname from car_makers join countries on car_makers.country = countries.countryid group by countries.countryid having count ( * ) > 3 union select countries.countryid , countries.countryname from car_makers join countries on car_makers.country = countries.countryid where car_makers.maker = 'fiat'
+select countries.countryid , countries.countryname from car_makers join countries on car_makers.country = countries.countryid group by countries.countryid having count ( * ) > 3 union select countries.countryid , countries.countryname from car_makers join countries on car_makers.country = countries.countryid where car_makers.maker = 'fiat'
+select airports.airportcode from airports join flights on airports.airportcode = flights.sourceairport group by airports.airportcode order by count ( * ) desc limit 1
+select airlines.airline from airlines join flights on airlines.airline = flights.airline group by airlines.airline order by count ( * ) desc limit 1
+select airlines.airline from airlines join flights on airlines.airline = flights.airline group by airlines.airline order by count ( * ) desc limit 1
+select airportname from airports where airportcode not in ( select airportcode from flights ) and airports.airportcode not in ( select airportcode from flights )
+select city from employee where age < 30 group by city having count ( * ) > 1
+select name from shop where number_products > ( select avg ( number_products ) from shop )
+select name from shop where number_products > ( select avg ( number_products ) from shop )
+select employee.name from employee join evaluation on employee.employee_id = evaluation.employee_id order by evaluation.bonus desc limit 1
+select employee.name from employee join evaluation on employee.employee_id = evaluation.employee_id order by evaluation.bonus desc limit 1
+select name from employee where employee_id not in ( select employee_id from evaluation )
+select name from employee where employee_id not in ( select employee_id from evaluation )
+select name from shop where shop_id not in ( select shop_id from hiring )
+select name from shop where shop_id not in ( select shop_id from hiring )
+select district from shop where number_products < 3000 intersect select district from shop where number_products > 10000
+select district from shop where number_products < 3000 intersect select district from shop where number_products > 10000
+select template_id from templates except select template_id from documents
+select template_id from templates except select template_id from documents
+select template_type_code from templates group by template_type_code order by count ( * ) desc limit 1
+select template_type_code from templates group by template_type_code order by count ( * ) desc limit 1
+select documents.document_name from documents join templates on documents.template_id = templates.template_id where templates.template_type_code = 'BK'
+select template_type_code from templates group by template_type_code order by count ( * ) desc limit 1
+select template_type_code from templates group by template_type_code order by count ( * ) desc limit 1
+select template_type_code from templates except select templates.template_type_code from templates join documents on templates.template_id = documents.template_id
+select template_type_code from templates except select template_type_code from documents join ref_template_types on documents.template_id = ref_template_types.template_type_code
+select document_id from paragraphs group by document_id order by count ( * ) asc limit 1
+select hometown from teacher group by hometown order by count ( * ) desc limit 1
+select hometown from teacher group by hometown order by count ( * ) desc limit 1
+select teacher.name , course_arrange.course_id from course_arrange join teacher on course_arrange.teacher_id = teacher.teacher_id order by teacher.name asc
+select teacher.name , course.course_id from course_arrange join teacher on course_arrange.teacher_id = teacher.teacher_id join course on course_arrange.course_id = course.course_id order by teacher.name asc
+select name from teacher where teacher_id not in ( select teacher_id from course_arrange )
+select name from teacher where teacher_id not in ( select teacher_id from course_arrange )
+select name from museum where num_of_staff > ( select min ( num_of_staff ) from museum where open_year > 2010 )
+select name from museum where museum_id not in ( select museum_id from visit )
+select winner_name from matches where year = 2013 intersect select winner_name from matches where year = 2016
+select year from matches group by year order by count ( * ) desc limit 1
+select year from matches group by year order by count ( * ) desc limit 1
+select matches.winner_name from rankings join matches on rankings.ranking_points = matches.winner_id where matches.tourney_name = 'Australian Open'
+select winner_name , loser_name from matches order by minutes desc limit 1
+select country_code from players group by country_code order by count ( * ) desc limit 1
+select country_code from players group by country_code order by count ( * ) desc limit 1
+select count ( distinct matches.winner_hand ) from players join matches on players.player_id = matches.winner_id where matches.tourney_name = 'WTA Championships' and players.hand = 'left'
+select players.first_name , players.country_code , players.birth_date from players join matches on players.player_id = matches.winner_id order by matches.winner_rank_points desc limit 1
+select distinct name from battle where bulgarian_commander = 'Kaloyan' and latin_commander = 'Baldwin I'
+select students.first_name , students.middle_name , students.last_name , student_enrolment.student_id from student_enrolment join students on student_enrolment.student_id = students.student_id group by student_enrolment.student_id having count ( * ) = 2
+select students.first_name , students.middle_name , students.last_name from student_enrolment join students on student_enrolment.student_id = students.student_id join degree_programs on student_enrolment.degree_program_id = degree_programs.degree_program_id where degree_programs.degree_summary_name = 'Bachelor'
+select semester_name from semesters where semester_id not in ( select semester_id from student_enrolment )
+select semester_name from semesters where semester_id not in ( select semester_id from student_enrolment )
+select courses.course_name from courses join student_enrolment_courses on courses.course_id = student_enrolment_courses.course_id
+sql placeholder
+sql placeholder
+select first_name , middle_name , last_name from students order by date_first_registered asc limit 1
+select first_name , middle_name , last_name from students order by date_first_registered asc limit 1
+select transcripts.transcript_id , count ( * ) from transcripts join student_enrolment_courses on transcripts.transcript_id = student_enrolment_courses.student_course_id group by transcripts.transcript_id order by count ( * ) desc limit 1
+select semester_id from student_enrolment where student_enrolment.student_id = 'MA' intersect select semester_id from student_enrolment where student_enrolment.student_id = 'Bachelors'
+select students.first_name from addresses join students on addresses.address_id = students.permanent_address_id where addresses.country = 'Haiti' or students.cell_mobile_number = '09700166582'
+select students.first_name from addresses join students on addresses.address_id = students.permanent_address_id where addresses.country = 'Haiti' or students.cell_mobile_number = '09700166582'
+select country , count ( * ) from tv_channel group by country order by count ( * ) desc limit 1
+select country , count ( * ) from tv_channel group by country order by count ( * ) desc limit 1
+select language , count ( * ) from tv_channel group by language order by count ( * ) asc limit 1
+select language , count ( * ) from tv_channel group by language order by count ( * ) asc limit 1
+select cartoon.title from tv_channel join cartoon on tv_channel.id = cartoon.channel where tv_channel.series_name = 'Sky Radio'
+select production_code , channel from cartoon order by original_air_date desc limit 1
+select tv_channel.country from tv_channel join cartoon on tv_channel.id = cartoon.channel where cartoon.written_by = 'Todd Casey'
+select tv_channel.country from tv_channel join cartoon on tv_channel.id = cartoon.channel where cartoon.written_by = 'Todd Casey'
+select country from tv_channel except select tv_channel.country from tv_channel join cartoon on tv_channel.id = cartoon.channel where cartoon.written_by = 'Todd Casey'
+select country from tv_channel except select tv_channel.country from tv_channel join cartoon on tv_channel.id = cartoon.channel where cartoon.written_by = 'Todd Casey'
+select id from tv_channel except select tv_channel.id from tv_channel join cartoon on tv_channel.id = cartoon.channel where cartoon.directed_by = 'Ben Jones'
+select id from tv_channel except select tv_channel.id from tv_channel join cartoon on tv_channel.id = cartoon.channel where cartoon.directed_by = 'Ben Jones'
+select package_option from tv_channel except select tv_channel.package_option from tv_channel join cartoon on tv_channel.id = cartoon.channel where cartoon.directed_by = 'Ben Jones'
+select package_option from tv_channel except select tv_channel.package_option from tv_channel join cartoon on tv_channel.id = cartoon.channel where cartoon.directed_by = 'Ben Jones'
+select people.birth_date from poker_player join people on poker_player.people_id = people.people_id order by poker_player.earnings asc limit 1
+select people.birth_date from poker_player join people on poker_player.people_id = people.people_id order by poker_player.earnings asc limit 1
+select poker_player.money_rank from poker_player join people on poker_player.people_id = people.people_id order by people.height desc limit 1
+select poker_player.money_rank from poker_player join people on poker_player.people_id = people.people_id order by people.height desc limit 1
+select nationality from people group by nationality order by count ( * ) desc limit 1
+select nationality from people group by nationality order by count ( * ) desc limit 1
+select name from people where people_id not in ( select people_id from poker_player )
+select name from people where people_id not in ( select people_id from poker_player )
+select continent from country group by continent order by count ( * ) desc limit 1
+select continent from country group by continent order by count ( * ) desc limit 1
+select count ( * ) from countrylanguage where language = 'English' intersect select count ( * ) from countrylanguage where language = 'Dutch'
+sql placeholder
+select country.name from country join countrylanguage on country.code = countrylanguage.countrycode where countrylanguage.language = 'English' intersect select country.name from country join countrylanguage on country.code = countrylanguage.countrycode where countrylanguage.language = 'French'
+select name from country where surfacearea > ( select max ( surfacearea ) from country where continent = 'Europe' )
+select name from country where surfacearea > ( select max ( surfacearea ) from country where continent = 'Europe' )
+select name from country where population < ( select min ( population ) from country where continent = 'Africa' )
+select name from country where population < ( select min ( population ) from country where continent = 'Africa' )
+select name from country where population > ( select max ( population ) from country where continent = 'Asia' )
+select name from country where population > ( select max ( population ) from country where continent = 'Asia' )
+select countrycode from countrylanguage where language != 'English'
+select countrycode from countrylanguage where language != 'English'
+select countrycode from countrylanguage where language != 'English'
+select countrycode from countrylanguage where language != 'English'
+sql placeholder
+select distinct city.name from city join countrylanguage on city.countrycode = countrylanguage.countrycode where countrylanguage.language = 'Chinese' and countrylanguage.isofficial = 'English'
+select language from countrylanguage group by language order by count ( * ) desc limit 1
+select language from countrylanguage group by language order by count ( * ) desc limit 1
+select count ( * ) from countrylanguage where language = 'Spanish' order by percentage desc limit 1
+select countrycode from countrylanguage where language = 'Spanish' order by percentage desc limit 1
+select record_company from orchestra group by record_company order by count ( * ) desc limit 1
+select record_company from orchestra group by record_company order by count ( * ) desc limit 1
+select orchestra from orchestra where orchestra_id not in ( select orchestra_id from performance )
+select orchestra from orchestra where orchestra_id not in ( select orchestra_id from performance )
+select record_company from orchestra where year_of_founded < 2003 intersect select record_company from orchestra where year_of_founded > 2003
+select record_company from orchestra where year_of_founded < 2003 intersect select record_company from orchestra where year_of_founded > 2003
+select grade from highschooler group by grade order by count ( * ) desc limit 1
+select grade from highschooler group by grade order by count ( * ) desc limit 1
+select id from highschooler except select student_id from friend
+select id from highschooler except select student_id from friend
+select name from highschooler where id not in ( select student_id from friend )
+select name from highschooler where id not in ( select student_id from friend )
+select highschooler.id from highschooler join friend on highschooler.id = friend.friend_id intersect select highschooler.id from highschooler join likes on highschooler.id = likes.liked_id
+select student_id from friend intersect select student_id from likes
+select highschooler.name from highschooler join friend on highschooler.id = friend.student_id intersect select highschooler.name from highschooler join likes on highschooler.id = likes.liked_id join friend on highschooler.id = friend.friend_id
+select name from highschooler where grade > 5 group by name having count ( * ) >= 2
+select name from highschooler where grade > 5 group by name having count ( * ) >= 2
+select avg ( grade ) from highschooler where id in ( select student_id from friend )
+select state from owners intersect select state from professionals
+select state from owners intersect select state from professionals
+select professionals.professional_id , professionals.last_name , professionals.cell_number from treatments join professionals on treatments.professional_id = professionals.professional_id where professionals.state = 'Indiana' union select professionals.professional_id , professionals.last_name , professionals.cell_number from treatments join professionals on treatments.professional_id = professionals.professional_id group by professionals.professional_id having count ( * ) > 2
+select treatments.professional_id , professionals.last_name , professionals.cell_number from treatments join professionals on treatments.professional_id = professionals.professional_id where professionals.state = 'Indiana' union select treatments.professional_id , professionals.last_name , professionals.cell_number from treatments join professionals on treatments.professional_id = professionals.professional_id group by treatments.professional_id having count ( * ) > 2
+select dogs.name from dogs join treatments on dogs.owner_id = treatments.dog_id where treatments.cost_of_treatment != 1000
+sql placeholder
+sql placeholder
+select owners.first_name , dogs.name from owners join dogs on owners.owner_id = dogs.owner_id
+select dogs.name , treatments.date_of_treatment from treatments join dogs on treatments.dog_id = dogs.dog_id where dogs.breed_code = ( select min ( breed_code ) from breeds )
+select owners.last_name from owners join dogs on owners.owner_id = dogs.owner_id order by dogs.age asc limit 1
+select owners.last_name from owners join dogs on owners.owner_id = dogs.owner_id order by dogs.age asc limit 1
+select count ( * ) from dogs where age < ( select avg ( age ) from dogs )
+select count ( * ) from dogs where age < ( select avg ( age ) from dogs )
+select citizenship from singer group by citizenship order by count ( * ) desc limit 1
+select citizenship from singer group by citizenship order by count ( * ) desc limit 1
+select name from singer where singer_id not in ( select singer_id from song )
+select name from singer where singer_id not in ( select singer_id from song )
+select citizenship from singer where birth_year < 1945 intersect select citizenship from singer where birth_year > 1955
+select citizenship from singer where birth_year < 1945 intersect select citizenship from singer where birth_year > 1955
+select property_name from properties where property_type_code = 'House' or room_count > 1
