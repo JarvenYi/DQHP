@@ -53,8 +53,8 @@ __NOTE: If you encounter an error IndexError: list index out of range, please de
 __NOTE: The training process for DQHP+NatSQL is identical to the above. Use the corresponding code in `./scripts/train/text2natsql/`__
 
 # 2. Validating DQHP
-Execute the terminal command:
-`sh ./scripts/inference/text2sql.sh scale_level spider`
-or
-`sh ./scripts/inference/text2natsql.sh scale_level spider`
+Execute the terminal command: \
+`sh ./scripts/inference/text2sql.sh scale_level spider` \
+or \
+`sh ./scripts/inference/text2natsql.sh scale_level spider` \
 where `scale_level` can be selected from `base`, `large`, or `3b`.
